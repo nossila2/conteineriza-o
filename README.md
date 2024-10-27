@@ -12,4 +12,7 @@ Backend:
 o container do frontend usa a imagem personalizada gerada a partir do Dockerfile no qual possui as instruções de como aplicação deve ser iniciada. A imagem é baseada na última versão do alpine. As atualizações que podem ocorrer nessa imagem seria a do próprio alpine.
 
 POSTGRES:
-O container do postgres utiliza a última imagem disponível no dockerhub. Caso haja necessidade de atualização basta apenas apagar a imagem e baixá-la novamente
+O container do postgres utiliza a última imagem disponível no dockerhub. Caso haja necessidade de atualização basta apenas apagar a imagem e baixá-la novamente. Há uma volume mapeado no docker-compose para armazenar os dados do backup.
+
+Docker-Compose:
+O arquivo do docker-compose armezena todas as instruções para iniciar todos os container de forma sequencial e posteriormente permitir o acesso a aplicação via HTTP/HTTPS.
