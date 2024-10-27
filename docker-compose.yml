@@ -1,0 +1,46 @@
+services:
+
+  nginx:
+    image: nginx:latest
+    restart: always
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ../nginx/appgues.teste.com.br.conf:/etc/nginx/conf.d/appgues.teste.com.br.conf
+
+  postgres:
+    image: postgres:12
+    restart: always
+    #ports:
+    # - '127.0.0.1:5432:5432'
+    volumes:
+      - /data/postgres:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_HOST_AUTH_METHOD=md5
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=secretpass
+
+  backend:
+    image: backend:v5
+    restart: always
+    # ports:
+    # - '0.0.0.0:5000:5000'
+    environment:
+      - FLASK_APP=run.py
+      - FLASK_DB_TYPE=postgres
+      - FLASK_DB_USER=postgres
+      - FLASK_DB_NAME=postgres
+      - FLASK_DB_PASSWORD=secretpass
+      - FLASK_DB_HOST=postgres
+      - FLASK_DB_PORT=5432 
+
+  frontend:
+    image: frontend:v6
+    restart: always
+    #ports:
+    # - '0.0.0.0:3000:3000'
+    environment:
+      - REACT_APP_BACKEND_URL=http://backend:5000
+   

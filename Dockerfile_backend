@@ -1,0 +1,27 @@
+FROM alpine:latest
+
+LABEL maintainer="alissonrafael18@gmail.com"
+
+USER root
+
+RUN  apk update  && \
+     apk add python3 && \
+     apk add py3-pip   && \
+     apk add bash  
+
+COPY guess_game/ /guess_game
+
+WORKDIR /guess_game
+
+RUN rm -f /usr/lib/python3.*/EXTERNALLY-MANAGED
+
+RUN python3 -m   venv /guess_game/venv && \
+    bash -c 'source /guess_game/venv/bin/activate'  && \
+    pip install -r /guess_game/requirements.txt && \
+    chmod +x /guess_game/start-backend.sh
+
+
+EXPOSE 5000
+
+CMD ["sh", "/guess_game/start-backend.sh","FOREGROUND"]
+

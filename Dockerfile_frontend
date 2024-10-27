@@ -1,0 +1,31 @@
+FROM alpine:latest
+
+LABEL maintainer="alissonrafael18@gmail.com"
+
+RUN echo > /etc/apk/repositories && \
+    echo "https://dl-cdn.alpinelinux.org/alpine/v3.13/main" >> /etc/apk/repositories && \
+    echo "https://dl-cdn.alpinelinux.org/alpine/v3.13/community" >> /etc/apk/repositories && \
+    apk update && \
+    apk upgrade && \
+    apk add --no-cache -U  curl bash ca-certificates openssl ncurses coreutils python3 make gcc g++ libgcc linux-headers util-linux binutils findutils
+
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+
+ENV NODE_VERSION=18.17.0
+ENV NVM_DIR=/root/.nvm
+
+COPY guess_game/ /guess_game
+
+WORKDIR /guess_game/frontend
+
+RUN  . "$NVM_DIR/nvm.sh" && \
+     NVM_NODEJS_ORG_MIRROR=https://unofficial-builds.nodejs.org/download/release/ nvm install $NODE_VERSION && \
+     nvm use $NODE_VERSION && \
+     corepack enable && \
+     npm install
+
+ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/.nvm/versions/node/v$NODE_VERSION/bin
+
+EXPOSE 3000
+
+CMD  ["yarn", "start"]
