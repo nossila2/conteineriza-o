@@ -18,7 +18,7 @@ o container do frontend usa a imagem personalizada gerada a partir do Dockerfile
 
 **POSTGRES**
 
-O container do postgres utiliza a imagem na versão 12 disponível no dockerhub. Caso haja necessidade de atualização basta apenas apagar a imagem e baixá-la em uma nova versão. Há uma volume mapeado no docker-compose para armazenar os dados do backup.
+O container do postgres utiliza a imagem na versão 12 disponível no dockerhub. Caso haja necessidade de atualização, basta apenas apagar a imagem e especificar no docker-compose a nova versão. Há uma volume mapeado no docker-compose para armazenar os dados do banco postgres.
 
 **Docker-Compose**
 
