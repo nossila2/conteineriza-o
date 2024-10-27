@@ -12,7 +12,7 @@ O container do nginx utiliza a última imagem disponível no dockerhub. Caso haj
 
 o container do frontend usa a imagem personalizada gerada a partir do Dockerfile no qual possui as instruções de como aplicação deve ser iniciada. A imagem é baseada na última versão do alpine. Há uma variável de ambiente: NODE_VERSION onde é especificado a versão do node a ser instalado. Caso haja necessidade de atualização basta apenas mudar a variável com a versão e gerar uma nova imagem.  Existe uma limitação dessa aplicação em relação a versão do python. A mesma só funciona com versões até 3.10. Por esse motivo foram adicionados os repositórios do alpine na versão: v3.13. Com isso foi instalado o python na versão 3.8
 
-**Backend**
+**BACKEND*
 
 o container do frontend usa a imagem personalizada gerada a partir do Dockerfile no qual possui as instruções de como aplicação deve ser iniciada. A imagem é baseada na última versão do alpine. As atualizações que podem ocorrer nessa imagem seria a do próprio alpine.
 
