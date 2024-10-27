@@ -16,3 +16,12 @@ O container do postgres utiliza a última imagem disponível no dockerhub. Caso 
 
 Docker-Compose:
 O arquivo do docker-compose armezena todas as instruções para iniciar todos os container de forma sequencial e posteriormente permitir o acesso a aplicação via HTTP/HTTPS.
+
+Comandos:
+
+Iniciar a aplicação (deve estar no diretório em que o arquivo docker-compose.yml esteja salvo):
+docker compose up -d
+
+Encerrar a aplicação 
+docker compose down ((deve estar no diretório em que o arquivo docker-compose.yml esteja salvo):)
+
