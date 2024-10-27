@@ -23,5 +23,12 @@ Iniciar a aplicação (deve estar no diretório em que o arquivo docker-compose.
 docker compose up -d
 
 Encerrar a aplicação 
-docker compose down ((deve estar no diretório em que o arquivo docker-compose.yml esteja salvo):)
+docker compose down (deve estar no diretório em que o arquivo docker-compose.yml esteja salvo):
+
+Gerar uma imagem nova do Nginx e Postgres:
+docker rmi (id da imagem)
+Na próxima inicialização a nova imagem será baixada do docker hub.
+
+Gerar uma nova imagem do Frontend e Backend:
+docker build . -t frontend:v(numero da nova versão) (deve estar no diretório em que o arquivo Dockerfile esteja salvo)
 
