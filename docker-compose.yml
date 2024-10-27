@@ -23,7 +23,7 @@ services:
       - POSTGRES_PASSWORD=secretpass
 
   backend:
-    image: backend:v5
+    image: backend:v1
     restart: always
     # ports:
     # - '0.0.0.0:5000:5000'
@@ -37,7 +37,7 @@ services:
       - FLASK_DB_PORT=5432 
 
   frontend:
-    image: frontend:v6
+    image: frontend:v1
     restart: always
     #ports:
     # - '0.0.0.0:3000:3000'
