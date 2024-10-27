@@ -1,7 +1,8 @@
 # Conteinerização
 
 O projeto consiste na execução de uma aplicação em nodejs na usados são usados containers segmentados em: nginx, frontend, backend e postgres. A fugura abaixo ilustra a arquitetura:
-![My Image](my-image.jpg)
+
+![My Image](arquitetura_app.png)
 
 NGINX
 O container do nginx utiliza a última imagem disponível no dockerhub. Caso haja necessidade de atualização basta apenas apagar a imagem e baixá-la novamente. Relacionado ao docker-compose é copiado o arquivo chamado: appgues.teste.com.br.conf no qual está armezanada a configuração para receber requisição externa na porta 443 e direcionar a porta 3000 do container do fronted.
