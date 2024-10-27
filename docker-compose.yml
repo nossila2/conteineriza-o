@@ -12,8 +12,6 @@ services:
   postgres:
     image: postgres:12
     restart: always
-    #ports:
-    # - '127.0.0.1:5432:5432'
     volumes:
       - /data/postgres:/var/lib/postgresql/data
     environment:
@@ -25,8 +23,6 @@ services:
   backend:
     image: backend:v1
     restart: always
-    # ports:
-    # - '0.0.0.0:5000:5000'
     environment:
       - FLASK_APP=run.py
       - FLASK_DB_TYPE=postgres
@@ -39,8 +35,6 @@ services:
   frontend:
     image: frontend:v1
     restart: always
-    #ports:
-    # - '0.0.0.0:3000:3000'
     environment:
       - REACT_APP_BACKEND_URL=http://backend:5000
    
